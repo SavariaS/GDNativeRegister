@@ -44,18 +44,18 @@ namespace godot
         public:
             static void _register_methods();
 
-            ClassExample();
-            ~ClassExample();
+            ToolExample();
+            ~ToolExample();
     };
 }
 ```
 
-Call `gdnative_autoregister::register_classes` in `godot_native_script_init'.
+Call `GDNativeAutoregister::register_classes` in `godot_native_script_init`.
 
 ``` cpp
 extern "C" void GDN_EXPORT godot_nativescript_init(void *handle) 
 {
     godot::Godot::nativescript_init(handle);
-    gdnative_autoregister::register_classes();
+    GDNativeAutoregister::register_classes();
 }
 ```
