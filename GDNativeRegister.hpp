@@ -1,14 +1,14 @@
-#ifndef GDNATIVE_AUTOREGISTER_HPP
-#define GDNATIVE_AUTOREGISTER_HPP
+#ifndef GDNATIVE_REGISTER_HPP
+#define GDNATIVE_REGISTER_HPP
 
 #include <Godot.hpp>
 #include <Engine.hpp>
 #include <vector>
 
-#define REGISTER_CLASS(CLASS) static inline bool m_registered = GDNativeAutoregister::register_class<CLASS>();
-#define REGISTER_TOOL(CLASS) static inline bool m_registered = GDNativeAutoregister::register_tool<CLASS>();
+#define REGISTER_CLASS(CLASS) static inline bool m_registered = GDNativeRegister::register_class<CLASS>();
+#define REGISTER_TOOL(CLASS) static inline bool m_registered = GDNativeRegister::register_tool<CLASS>();
 
-class GDNativeAutoregister
+class GDNativeRegister
 {
     private:
         static std::vector<void(*)()>& m_class_funcs()
@@ -24,7 +24,7 @@ class GDNativeAutoregister
         }
     
     public:
-        GDNativeAutoregister() = delete;
+        GDNativeRegister() = delete;
 
         template<typename T>
         static inline bool register_class()
